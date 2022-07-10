@@ -11,7 +11,7 @@ var cors = require('cors')
 
 app.use(cors())
 
-const port = 3000;
+const port = process.env.PORT || 3000
 let users = {
 }
 
@@ -37,7 +37,12 @@ app.get('/', (req, res) => {
 
 app.get('/inbox', async (req, res) => {
     const skip = (typeof req.query.skip === "string") ? Number(req.query.skip) : undefined;
-    const take = (typeof req.query.take === "string") ? Number(req.query.take) : undefined;
+    const take = (typeof req.query.take === "string") ? Number(req.query.take) : 10;
+    if (take > 10) {
+        res.status(420).send({
+            detail: "Take is big"
+        });
+    }
     let result = await prisma.message.findMany({
         skip: skip,
         take: take,
