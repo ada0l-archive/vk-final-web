@@ -7,6 +7,10 @@ const pkg = require("@prisma/client");
 const { PrismaClient } = pkg;
 const prisma = new PrismaClient();
 
+var cors = require('cors')
+
+app.use(cors())
+
 const port = 3000;
 let users = {
 }
