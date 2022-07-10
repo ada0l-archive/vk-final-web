@@ -6,6 +6,7 @@
 
 Go to created folder and run:
 `yarn` or `npm install` to install dependencies of project
+
 Then run:
 `yarn start` or  `npm start` to start dev server with hot reload on `localhost:10888`.
 
